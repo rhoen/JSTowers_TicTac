@@ -20,7 +20,7 @@ Game.prototype.toggleTurn = function  () {
 }
 
 Game.prototype.promptPlayer = function (callback) {
-  reader.question("Enter Position: ", function(pos) {
+  reader.question(this.turn + " enter position: ", function(pos) {
     var row = parseInt(pos[0]);
     var col = parseInt(pos[1]);
     callback([row,col]);
@@ -28,7 +28,7 @@ Game.prototype.promptPlayer = function (callback) {
 }
 
 Game.prototype.run = function (completionCallback) {
-  this.board.render
+  this.board.render();
   promptPlayer(function () {
 
   })
