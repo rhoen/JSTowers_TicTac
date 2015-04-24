@@ -22,6 +22,12 @@ Board.prototype.won = function () {
   }
 }
 
+Board.prototype.placeMark = function (pos, mark) {
+  var row = pos[0];
+  var col = pos[1];
+  this.board[row][col] = mark;
+}
+
 Board.prototype.checkRows = function () {
   var won = false
   for (var i = 0; i < this.board.length; i++) {
