@@ -1,5 +1,5 @@
 function Board () {
-  this.board = [["x", "_", "_"],["x", "_", "_"],["x", "_", "_"]];
+  this.board = [["_", "_", "_"],["_", "_", "_"],["_", "_", "_"]];
 };
 
 Board.prototype.render = function () {
@@ -7,6 +7,12 @@ Board.prototype.render = function () {
     console.log(this.board[i]);
   }
 };
+
+Board.prototype.empty = function (pos) {
+  var row = pos[0];
+  var col = pos[1];
+  return this.board[row][col] === "_";
+}
 
 Board.prototype.won = function () {
   if (this.checkRows() || this.checkColumns() || this.checkDiag()) {
@@ -51,6 +57,9 @@ Board.prototype.checkDiag = function () {
   }
   return won;
 }
+
+board = new Board()
+console.log(board.empty([0,0]));
 
 
 module.exports = Board;
