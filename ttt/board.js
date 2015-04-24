@@ -1,24 +1,24 @@
 function Board () {
-  this.board = [["_", "_", "_"],["_", "_", "_"],["_", "_", "_"]];
+  this.grid = [["_", "_", "_"],["_", "_", "_"],["_", "_", "_"]];
 };
 
 Board.prototype.render = function () {
-  for (var i = 0; i < this.board.length; i++){
-    console.log(this.board[i]);
+  for (var i = 0; i < this.grid.length; i++){
+    console.log(this.grid[i]);
   }
 };
 
 Board.prototype.empty = function (pos) {
   var row = pos[0];
   var col = pos[1];
-  return this.board[row][col] === "_";
+  return this.grid[row][col] === "_";
 }
 
 Board.prototype.full = function () {
   var full = true;
-  for (var i = 0; i < this.board.length; i++) {
-    for (var j = 0; j < this.board[0].length; j++) {
-      if (this.board[i][j] === "_") {
+  for (var i = 0; i < this.grid.length; i++) {
+    for (var j = 0; j < this.grid[0].length; j++) {
+      if (this.grid[i][j] === "_") {
         full = false;
       }
     }
@@ -38,13 +38,13 @@ Board.prototype.won = function () {
 Board.prototype.placeMark = function (pos, mark) {
   var row = pos[0];
   var col = pos[1];
-  this.board[row][col] = mark;
+  this.grid[row][col] = mark;
 }
 
 Board.prototype.checkRows = function () {
   var won = false
-  for (var i = 0; i < this.board.length; i++) {
-    var row = this.board[i] + ""
+  for (var i = 0; i < this.grid.length; i++) {
+    var row = this.grid[i] + ""
     if (row === "x,x,x" || row === "o,o,o"){
       won = true;
     }
@@ -55,8 +55,8 @@ Board.prototype.checkRows = function () {
 
 Board.prototype.checkColumns = function () {
   var won = false;
-  for (var i = 0; i < this.board[0].length; i++){
-    var col = [this.board[0][i], this.board[1][i], this.board[2][i]] + "";
+  for (var i = 0; i < this.grid[0].length; i++){
+    var col = [this.grid[0][i], this.grid[1][i], this.grid[2][i]] + "";
     if (col === "x,x,x" || col === "o,o,o"){
       won = true;
     }
@@ -67,8 +67,8 @@ Board.prototype.checkColumns = function () {
 
 Board.prototype.checkDiag = function () {
   var won = false;
-  var diag1 = [this.board[0][0], this.board[1][1], this.board[2][2]] + "";
-  var diag2 = [this.board[0][2], this.board[1][1], this.board[2][0]] + "";
+  var diag1 = [this.grid[0][0], this.grid[1][1], this.grid[2][2]] + "";
+  var diag2 = [this.grid[0][2], this.grid[1][1], this.grid[2][0]] + "";
   if (diag1 === "x,x,x" || diag1 === "o,o,o") {
     won = true;
   } else  if (diag2 === "x,x,x" || diag2 === "o,o,o") {
@@ -77,8 +77,8 @@ Board.prototype.checkDiag = function () {
   return won;
 }
 
-board = new Board()
-console.log(board.full());
+grid = new Board()
+console.log(grid.full());
 
 
 module.exports = Board;

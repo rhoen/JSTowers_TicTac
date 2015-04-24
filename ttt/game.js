@@ -1,13 +1,13 @@
 var Board = require('ttt/board.js')
-
-function Game (readerThing) {
-  this.readline = require('readline');
-  this.reader = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  };
+var readline = require('readline');
+var reader = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+function Game (reader) {
+  this.reader = reader;
   this.turn = "player1";
-
+  this.board = new Board();
   //game stuff
 };
 
@@ -19,10 +19,19 @@ Game.prototype.toggleTurn = function  () {
   }
 }
 
-Game.prototype.input = function () {
-  reader.question(ljksfdkljfdsjlksfdjlkfds)
+Game.prototype.promptPlayer = function (callback) {
+  reader.question("Enter Position: ", function(pos) {
+    var row = parseInt(pos[0]);
+    var col = parseInt(pos[1]);
+    callback([row,col]);
+  })
 }
 
 Game.prototype.run = function (completionCallback) {
+  this.board.render
+  promptPlayer(function () {
 
+  })
 }
+
+new Game(reader)
