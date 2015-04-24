@@ -14,6 +14,19 @@ Board.prototype.empty = function (pos) {
   return this.board[row][col] === "_";
 }
 
+Board.prototype.full = function () {
+  var full = true;
+  for (var i = 0; i < this.board.length; i++) {
+    for (var j = 0; j < this.board[0].length; j++) {
+      if (this.board[i][j] === "_") {
+        full = false;
+      }
+    }
+  }
+
+  return full;
+}
+
 Board.prototype.won = function () {
   if (this.checkRows() || this.checkColumns() || this.checkDiag()) {
     return true;
@@ -65,7 +78,7 @@ Board.prototype.checkDiag = function () {
 }
 
 board = new Board()
-console.log(board.empty([0,0]));
+console.log(board.full());
 
 
 module.exports = Board;
