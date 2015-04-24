@@ -1,52 +1,52 @@
-// function Clock () {
-//   this.currentTime = new Date();
-// }
-//
-// Clock.TICK = 5000;
-//
-// Clock.prototype.printTime = function () {
-//   var seconds = this.currentTime.getSeconds();
-//   var minutes = this.currentTime.getMinutes();
-//   var hours = this.currentTime.getHours();
-//   console.log(hours + ":" + minutes + ":" + seconds);
-// };
-//
-// Clock.prototype.run = function () {
-//   this.printTime();
-//   setInterval(this._tick.bind(this), Clock.TICK);
-// };
-//
-// Clock.prototype._tick = function () {
-//   this.currentTime = new Date(this.currentTime.getTime() + Clock.TICK);
-//   this.printTime();
-// };
-//
-// var clock = new Clock();
-// clock.run();
-//
+function Clock () {
+  this.currentTime = new Date();
+}
+
+Clock.TICK = 5000;
+
+Clock.prototype.printTime = function () {
+  var seconds = this.currentTime.getSeconds();
+  var minutes = this.currentTime.getMinutes();
+  var hours = this.currentTime.getHours();
+  console.log(hours + ":" + minutes + ":" + seconds);
+};
+
+Clock.prototype.run = function () {
+  this.printTime();
+  setInterval(this._tick.bind(this), Clock.TICK);
+};
+
+Clock.prototype._tick = function () {
+  this.currentTime = new Date(this.currentTime.getTime() + Clock.TICK);
+  this.printTime();
+};
+
+var clock = new Clock();
+clock.run();
+
 var readline = require('readline');
 var reader = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-//
-// function addNumbers(sum, numsLeft, completionCallback){
-//   if (numsLeft === 0) {
-//     completionCallback(sum);
-//   } else {
-//     reader.question("Enter a number: ", function(numString){
-//       var num = parseInt(numString);
-//       var newSum = sum + num;
-//       numsLeft--;
-//       console.log(newSum + " is the current sum");
-//       addNumbers(newSum, numsLeft, completionCallback);
-//     });
-//   }
-// }
-//
-// addNumbers(0, 3, function (sum) {
-//   console.log("Total Sum: " + sum);
-// });
+
+function addNumbers(sum, numsLeft, completionCallback){
+  if (numsLeft === 0) {
+    completionCallback(sum);
+  } else {
+    reader.question("Enter a number: ", function(numString){
+      var num = parseInt(numString);
+      var newSum = sum + num;
+      numsLeft--;
+      console.log(newSum + " is the current sum");
+      addNumbers(newSum, numsLeft, completionCallback);
+    });
+  }
+}
+
+addNumbers(0, 3, function (sum) {
+  console.log("Total Sum: " + sum);
+});
 
 function askIfGreaterThan(el1, el2, callback){
   reader.question("Is " + el1 + " greater than " + el2 + "?",function(answer){
